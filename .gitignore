@@ -1,1 +1,3 @@
-myBlog/data/*
+myBlog/data/
+
+.DS_Store

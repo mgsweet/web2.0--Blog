@@ -7,3 +7,6 @@
 2. 在另外一个终端输入： ``一个终端运行服务器 DEBUG=signin:* npm start`` 运行app
 3. 打开 http://localhost:3000
 
+## 运行效果
+![运行截图](https://raw.githubusercontent.com/mgsweet/web2.0-Blog/master/image/Screen%20Shot%202017-05-20%20at%202.05.10%20PM.png)
+

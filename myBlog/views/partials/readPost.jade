@@ -1,0 +1,11 @@
+section
+  h3 {{post.title}}
+  h4 by {{post.author}}
+  hr
+  div {{post.text}}
+  p comment:
+      ul
+        li(ng-repeat="comment in post.comments") {{comment.author}}: {{comment.text}} 
+          a(href="../../editComment/{{post.id}}/{{comment.commentId}}") edit
+          span  - 
+          a delete

@@ -1,0 +1,25 @@
+p.alert.alert-success There are {{posts.length}} posts
+div(ng-repeat='post in posts')
+  h3 {{post.title}}
+    small  by {{post.author}}
+  hr
+  div(class="text-danger" ng-if="post.hide") 该内容已被管理员隐藏！
+  div(ng-if="hasPower('admin') || !post.hide")
+    div {{post.text}}
+    p comment:
+      ul
+        li(ng-repeat="comment in post.comments") {{comment.author}}: {{comment.text}} 
+          div(ng-if="hasPower(comment.author)")
+            a(href="/editComment/{{post.id}}/{{comment.commentId}}") edit
+            span  - 
+            a(href="/deleteComment/{{post.id}}/{{comment.commentId}}") delete
+    a(href='/readPost/{{post.id}}') More
+    span  - 
+    a(href='/editPost/{{post.id}}' ng-if="hasPower(post.author)") Edit
+    apan(ng-if="hasPower(post.author)")  - 
+    a(href='/deletePost/{{post.id}}' ng-if="hasPower(post.author)") Delete
+    span(ng-if="hasPower(post.author)")  - 
+    a(href='/addComment/{{post.id}}') Comment
+    span(ng-if="hasPower('admin')")  - 
+    button.btn.btn-danger.btn-sm(ng-if="hasPower('admin') && !post.hide" ng-click="hidePost(post.id)") Hide
+    button.btn.btn-success.btn-sm(ng-if="hasPower('admin') && post.hide" ng-click="showPost(post.id)") Show

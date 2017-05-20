@@ -1,0 +1,19 @@
+form(name='myForm' ng-submit="submitPost()")
+    p(ng-show = 'hasError' class="text-danger") 用户已存在！
+
+    div.form-group
+      label.control-label 用户名
+      input(class="form-control" name="username", placeholder="Your name" ng-model='user.username' required)
+
+    div.form-group
+      label.control-label 密码
+      input(class="form-control" name="password" type="password" placeholder="Your password" ng-model='user.password' required)
+
+    div.form-group
+      label.control-label 重复密码
+      input(class="form-control" name="repeatPassword" type="password" placeholder="repeat your password" ng-model='user.repeatPassword' ng-blur='checkEqual()' required)
+      span(ng-show='notEqual' class="text-danger") 两次输入密码不相同
+
+    div
+      button(class="btn btn-success" id="register" type="submit" ng-disabled="myForm.$invalid || notEqual") 注册
+      button(class="btn btn-success" id="reset" type="button" ng-click='reset()') 重置

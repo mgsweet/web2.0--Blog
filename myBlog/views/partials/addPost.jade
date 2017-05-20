@@ -1,0 +1,6 @@
+h2 Write a new post
+label(for='title') Title: 
+input(ng-model='form.title', name='title')
+h3 Body:
+textarea.form-control(ng-model='form.text', cols='50', rows='15')
+button.btn.btn-success(ng-click='submitPost()') Submit Post

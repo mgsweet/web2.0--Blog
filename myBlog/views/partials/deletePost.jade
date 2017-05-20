@@ -1,0 +1,7 @@
+h2 {{post.title}}
+div {{post.text}}
+p.text-danger
+  | Are you sure you want to delete this post? 
+  button.btn.btn-danger(ng-click='deletePost()') Yes
+  |  - 
+  button.btn.btn-info(ng-click='home()') No thanks

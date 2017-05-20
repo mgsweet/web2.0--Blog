@@ -1,0 +1,41 @@
+extends layout
+
+block content
+  nav.navbar.navbar-inverse.navbar-static-top(ng-controller="userCtrl")
+    div.container
+      div.navbar-header
+        a(href='/').active.navbar-brand My Blog
+      div.navbar-collapse.collapse
+        ul.nav.navbar-nav
+          li
+            a(href='/') Home
+          li(ng-if="userInfo.hasSignin")
+            a(href='/addPost') Add a new post
+        ul.nav.navbar-nav.navbar-right(ng-if="!userInfo.hasSignin")
+          li
+            a(href='/signin') 登陆
+          li
+            a(href='/signup') 注册
+        ul.nav.navbar-nav.navbar-right(ng-if="userInfo.hasSignin")
+          li
+            a welcome, {{userInfo.user.username}} !
+          li
+            a(href='/' ng-click="signout()") 注销
+        form.navbar-form.navbar-right
+          div.form-group
+            input.form-control(type="text" placeholder="请输入关键词")
+          button.btn.btn-success(type="submit") 搜索
+  div.container
+    div.row
+      div.col-md-10(ng-view)
+  
+  script(src='javascripts/lib/jquery.js')
+  script(src='javascripts/lib/bootstrap/js/bootstrap.min.js')
+  script(src='javascripts/lib/angular/angular.js')
+  script(src='javascripts/lib/angular/angular-route.js')
+  script(src='javascripts/app.js')
+  script(src='javascripts/services.js')
+  script(src='javascripts/controllers.js')
+  script(src='javascripts/logInOutCtrls.js')
+  script(src='javascripts/filters.js')
+  script(src='javascripts/directives.js')
